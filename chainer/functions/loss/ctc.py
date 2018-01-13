@@ -333,6 +333,8 @@ def connectionist_temporal_classification(
         xp = cuda.get_array_module(x[0].data)
         input_length = variable.Variable(
             xp.full((len(x[0].data),), len(x), dtype=numpy.int32))
+    if label_length is None:
+        xp = cuda.get_array_module(t.data)
         label_length = variable.Variable(
             xp.full((len(t.data),), len(t.data[0]), dtype=numpy.int32))
 
